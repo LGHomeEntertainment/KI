@@ -1,0 +1,198 @@
+/* Container for the grid */
+#table {
+  display: grid;
+  border-collapse: collapse;
+  border-spacing: 0;
+  grid-template-columns: repeat(10, 30px); 
+  width: fit-content;
+  margin: 20px auto;
+}
+
+/* Each cell */
+.cell {
+  width: 30px;
+  height: 30px;
+  background-color: lightyellow;
+  border: 1px solid #999;
+  padding: 0;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Missed cell */
+.cell.drawn {
+  background-color: red;
+}
+
+/* Picked cell */
+.cell.picked {
+  background-color: lightblue;
+}
+
+/* Hit cell */
+.cell.hit {
+  background-color: green;
+}
+
+.cell {
+  position: relative; /* Needed for absolute positioning of ::before */
+}
+
+.cell::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  border: 2px solid blue;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  box-sizing: border-box;
+}
+
+.cell.picked::before {
+  opacity: 1;
+}
+
+.setting-row {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  gap: 10px; /* space between items */
+  margin: 10px 0;
+}
+
+.setting-row button {
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background-color: gold;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.setting-row button:hover:not(:disabled) {
+  background-color: orange;
+}
+
+.setting-row span {
+  font-size: 16px;
+  font-weight: bold;
+  min-width: 160px;
+  text-align: center;
+}
+
+
+#ui-panels {
+  max-width: 600px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel {
+  background: #111;
+  border: 2px solid #333;
+  border-radius: 12px;
+  padding: 16px;
+  color: #eee;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 6px;
+}
+
+/* Upgrade buttons - to add colour if affordable */
+.upgrade-btn,
+.prestige-btn {
+  width: 100%;
+  background: #222;
+  color: #eee;
+  border: 1px solid #444;
+  opacity: 1;
+  transition: opacity 0.2s;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upgrade-btn::affordable {
+  background: #2a2a2a;
+}
+
+.upgrade-btn::affordable:hover {
+  background: #3a3a3a;
+}
+
+.ugrade-btn.locked {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.upgrade-btn.maxed {
+  background: #111;
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Cost text */
+.cost {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+#tabs{
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.tab-btn {
+  background: #222;
+  border: 1px solid #444;
+  color: #ccc;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background: #444;
+  color: #fff;
+}
+
+.tab-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Prestige visual difference */
+.prestige {
+  border-color: gold;
+  background: linear-gradient(145deg, #1a1400, #0d0a00);
+}
+
+/* Hidden panels */
+.hidden {
+  display: none;
+}

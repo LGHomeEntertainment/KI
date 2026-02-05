@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Keno Incremental</title>
+
+<link rel="stylesheet" href="style.css">
+
+  </head>
+  <body>
+    <div id="game-container">
+      <h1>KN</h1>
+
+      <div id="table"> </div>
+      
+
+      <div class="display">
+        <div id="moneyDisplay">Money: $0</div>
+        <p id="feedback"></p>
+      </div>
+
+      <div class="controls">
+        <button id="playBtn">Play!</button>
+        <button id="clearBtn">Clear All</button>
+        <button id="debugResetBtn">Debug Reset</button>
+      </div>
+
+      <div id="ui-panels">
+        <!-- UPGRADES -->
+        <section id="upgradesPanel" class="panel">
+          <h2>Upgrades</h2>
+
+          <button class="upgrade-btn" id="upgradeDrawSpeed">
+            Faster Draw Speed
+            <span class="cost">$100</span>
+          </button>
+
+          <button class="upgrade-btn" id="upgradeAutoPlay">
+            Autoplay
+            <span class="cost">$1,000</span>
+          </button>
+        </section>
+
+        <!-- AUTOMATION -->
+        <section id="automationPanel" class="panel hidden">
+          <h2>Automation</h2>
+
+          <button class="upgrade-btn">
+            Auto Pick Numbers
+            <span class="cost">$10,000</span>
+          </button>
+        </section>
+
+        <!-- PRESTIGE -->
+        <section id="prestigePanel" class="panel hidden prestige">
+          <h2>Prestige</h2>
+
+          <p>Reset everything and open a VIP casino.</p>
+
+          <button class="prestige-btn">Enter VIP Room</button>
+        </section>
+      </div>
+    </div>
+
+<script src="globals.js"></script>  
+<script src="ui.js"></script>  
+<script src="main.js"></script>
+<script src="upgrades.js"></script>
+<script src="keno.js"></script>
+<script src="softStart.js"></script>
+<script src="payout.js"></script>
+<script src="save.js"></script>
+
+    
+  </body>
+</html>
