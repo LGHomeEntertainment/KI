@@ -1,3 +1,18 @@
+const upgrades = {
+  fasterDraw: {
+    cost: 1000,
+    owned: false,
+  },
+  autoPlay: {
+    cost: 10000,
+    owned: false,
+  },
+  autoPick: {
+    cost: 10000,
+    owned: false,
+  },
+};
+
 function applyUpgrades() {
   roundsUpgrade = gameState.upgrades.autoPlay == true;
 }
@@ -7,9 +22,13 @@ function getDrawInterval() {
 }
 
 function refreshUpgradeUI() {
-  const btn = document.getElementById("upgradeAutoPlay");
+  const autoPlayBtn = document.getElementById("upgradeAutoPlay");
   const cost = upgrade_defs.autoPlay.cost;
   const owned = gameState.upgrades.autoPlay;
+
+  const autoPickBtn = document.querySelector('[data-upgrade="autoPick"]');
+  const costSpan = btn.querySelector(".cost");
+  costSpan.textContent = `$${upgrades.autoPick.cost.toLocaleString()}`;
 
   btn.classList.remove("affordable", "locked", "maxed");
   btn.disabled = false;
@@ -28,7 +47,6 @@ function refreshUpgradeUI() {
     btn.disabled = true;
   }
 }
-
 
 // ==== BUYING UPGRADES ====
 function buyAutoPlay() {
@@ -70,7 +88,7 @@ function buyMoneyMultiplier() {
   let def = upgrade_defs.payoutMultiplier;
   let level = gameState.upgrades.payoutMultiplier;
 
-//  if (level >= def.maxLevel) return; // no max level needed
+  //  if (level >= def.maxLevel) return; // no max level needed
 
   const cost = Math.floor(def.baseCost * Math.pow(def.costScaling, level));
 
@@ -89,7 +107,7 @@ function buyMoneyMultiplierVip() {
   let def = upgrade_defs.payoutMultiplier;
   let level = gameState.upgrades.payoutMultiplier;
 
-//  if (level >= def.maxLevel) return; // no max level needed
+  //  if (level >= def.maxLevel) return; // no max level needed
 
   const cost = Math.floor(def.baseCost * Math.pow(def.costScaling, level));
 
@@ -101,4 +119,3 @@ function buyMoneyMultiplierVip() {
   updateMoneyDisplay();
   saveGame();
 }
-
