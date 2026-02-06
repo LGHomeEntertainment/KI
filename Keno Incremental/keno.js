@@ -88,6 +88,7 @@ function playGame() {
   
   if (!gameState.upgrades.autoPlay) {
     resetBoard();
+    document.getElementById("feedback").textContent = "";
     singleRound();
   } else {
     autoPlay = true
@@ -109,6 +110,7 @@ function multipleRounds() {
   if (!autoPlay) return;
   updateMoneyDisplay();
   resetBoard();
+  document.getElementById("feedback").textContent = feedbackText;
   
   generateWinners(() => {
     comparePicks();
