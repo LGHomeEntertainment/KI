@@ -5,6 +5,7 @@ let playerPicks = [];
 let bet = 1; // upgradeable so that win more per round
 let gameRunning = false;
 let generatedNumbers = [];
+let autoPlay = false;
 
 // ==== UPGRADABLES ==== (those in brackets are KIV)
 // let winningMultiplier = 1; // each next one is 2x
