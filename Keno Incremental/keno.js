@@ -80,14 +80,17 @@ function comparePicks() {
 }
 
 function playGame() {
-  if (gameRunning && !roundsUpgrade) return;
-  if (playerPicks.length == 0 || playerPicks.length < 10) return;
+  if (gameRunning) return;
+  if (playerPicks.length == 0) return; // || playerPicks.length < 10
+  
   gameRunning = true;
   disableInputs();
+  
   if (!gameState.upgrades.autoPlay) {
     resetBoard();
     singleRound();
   } else {
+    autoPlay = true
     multipleRounds();
   }
 }
@@ -103,12 +106,17 @@ function singleRound() {
 }
 
 function multipleRounds() {
+  if (!autoPlay) return;
   updateMoneyDisplay();
   resetBoard();
   
   generateWinners(() => {
     comparePicks();
-    setTimeout(playGame, roundInterval); // pause between rounds
+    setTimeout(() =>  {
+      if (autoPlay) { 
+        multipleRounds()
+      }
+    }, roundInterval); // pause between rounds
   });
 }
 
@@ -133,3 +141,10 @@ function clearPicks() {
   playerPicks = [];
   generatedNumbers = [];
 }
+
+function stopAutoPlay() {
+  autoPlay = false;
+  gameRunning = false
+  enableInputs()
+}
+  
