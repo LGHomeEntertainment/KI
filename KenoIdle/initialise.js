@@ -4,13 +4,13 @@ let playerPicks = [];
 let playerMoney = 10000000;
 let gameRunning = false;
 let generatedNumbers = [];
-let currentRound = 1;
-let betOptions = [100, 1000, 10000, 100000, 1000000];
-let betIndex = 3;
-let bet = betOptions[betIndex];
-let roundOptions = [1, 5, 10, 20];
-let roundIndex = 2;
-let playRounds = roundOptions[roundIndex];
+// let currentRound = 1;
+// let betOptions = [100, 1000, 10000, 100000, 1000000];
+// let betIndex = 3;
+let bet = 1;
+// let roundOptions = [1, 5, 10, 20];
+// let roundIndex = 2;
+// let playRounds = roundOptions[roundIndex];
 let roundInterval = 2000;
 let drawInterval = 200;
 let boardSize = 80
@@ -28,8 +28,6 @@ document.addEventListener("DOMContentLoaded", initialise);
 function initialise() {
   generateGrid(boardSize)
   attachListeners();
-  updateBetDisplay();
-  updateRoundDisplay();
   updateMoneyDisplay();
 }
 
@@ -47,85 +45,7 @@ function generateGrid(boardSize) {
   // enableInputs();
 }
 
-// ==== CUSTOMISATION/SETTINGS (shared function) ====
 
-function updateBetDisplay() {
-  updateSettingsDisplay(
-    betIndex,
-    betOptions,
-    "betDisplay",
-    "lowerBet",
-    "increaseBet"
-  );
-}
-
-function updateRoundDisplay() {
-  updateSettingsDisplay(
-    roundIndex,
-    roundOptions,
-    "roundsDisplay",
-    "fewerRounds",
-    "moreRounds"
-  );
-}
-
-function adjustBet(e) {
-    console.log("Adjusting bet...");
-  betIndex = adjustSetting(
-    e,
-    betIndex,
-    betOptions,
-    updateBetDisplay,
-    "lowerBet",
-    "increaseBet"
-  );
-  bet = betOptions[betIndex];
-}
-
-function adjustRounds(e) {
-  roundIndex = adjustSetting(
-    e,
-    roundIndex,
-    roundOptions,
-    updateRoundDisplay,
-    "fewerRounds",
-    "moreRounds"
-  );
-  playRounds = roundOptions[roundIndex];
-}
-
-function updateSettingsDisplay(index, options, displayId, downId, upId) {
-  let value = options[index];
-  if (displayId == "betDisplay") {
-    value = "$" + value.toLocaleString();
-  }
-  document.getElementById(displayId).textContent = value;
-
-  // Disable buttons at the ends
-  let atMin = index == 0;
-  let atMax = index == options.length - 1;
-
-  let downBtn = document.getElementById(downId);
-  let upBtn = document.getElementById(upId);
-
-  downBtn.disabled = atMin;
-  downBtn.style.opacity = atMin ? 0.5 : 1;
-
-  upBtn.disabled = atMax;
-  upBtn.style.opacity = atMax ? 0.5 : 1;
-}
-
-function adjustSetting(e, index, options, updateDisplayFn, lowerId, upperId) {
-  let id = e.currentTarget.id;
-
-  if (id == lowerId && index > 0) {
-    index--;
-  } else if (id == upperId && index < options.length - 1) {
-    index++;
-  }
-  updateDisplayFn();
-  return index; // return index to be stored
-}
 
 // ==== GAME LOGIC ====
 
@@ -208,40 +128,27 @@ function comparePicks() {
   updateMoneyDisplay();
 }
 
-function multipleRounds() {
-  if (playerPicks.length == 0) return;
-  gameRunning = true;
-  // disableInputs();
-  currentRound = 1;
+function startGameLoop() {
+  if (playerPicks.length === 0 || gameRunning) return;
 
-  // if currentround > 1 && < play rounds run resetboard!!
-  function playNextRound() {
-    if (playerMoney < bet) {
-      document.getElementById("feedback").textContent =
-        "You are broke. Bye bye.";
-      gameRunning = false;
-      enableInputs();
-      return;
-    }
-    if (currentRound > playRounds) {
-      gameRunning = false;
-      enableInputs();
-      return;
-    }
-    playerMoney -= bet;
-    updateMoneyDisplay();
-    resetBoard();
-    generateWinners(() => {
-      comparePicks();
-      currentRound++;
-      setTimeout(playNextRound, roundInterval); // pause between rounds
-    });
-  }
-  playNextRound();
+  gameRunning = true;
+  runRound();
+}
+
+function runRound() {
+  resetBoard();
+
+  generateWinners(() => {
+    comparePicks();
+
+    setTimeout(() => {
+      runRound(); // no guards here
+    }, roundInterval);
+  });
 }
 
 function resetBoard() {
-  let cells = document.querySelectorAll("div");
+  let cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => {
     cell.classList.remove("hit", "drawn");
   });
@@ -255,7 +162,7 @@ function updateMoneyDisplay() {
 }
 
 function clearPicks() {
-  let cells = document.querySelectorAll("td");
+  let cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => {
     cell.classList.remove("hit", "drawn", "picked");
   });
@@ -272,27 +179,10 @@ function attachListeners() {
   toggleCell(e);
 });
 
-
-  // Bet buttons
-  document.querySelectorAll(".changeBet").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      if (gameRunning) return;
-      adjustBet(e);
-    });
-  });
-
-  // Round buttons
-  document.querySelectorAll(".changeRounds").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      if (gameRunning) return;
-      adjustRounds(e);
-    });
-  });
-
   // Play + clear
   document.getElementById("playBtn").addEventListener("click", () => {
     if (gameRunning) return; // prevent spam-click start
-    multipleRounds();
+    startGameLoop();
   });
 
   document.getElementById("clearBtn").addEventListener("click", () => {
@@ -302,16 +192,3 @@ function attachListeners() {
 }
 
 
-// ==== PAYOUT TABLE ====
-let payoutTable = {
-  1: [8],
-  2: [2, 38],
-  3: [2, 7, 80],
-  4: [2, 3, 10, 300],
-  5: [1.5, 3, 5, 50, 2000],
-  6: [1.5, 2, 4, 10, 200, 4000],
-  7: [0, 3, 10, 25, 150, 1000, 5000],
-  8: [0, 2, 7, 20, 200, 500, 1000, 10000],
-  9: [0, 2, 5, 10, 70, 200, 1000, 10000, 50000],
-  10: [0, 1.5, 3, 10, 50, 500, 5000, 10000, 50000, 100000],
-};

@@ -38,11 +38,11 @@
   background-color: green;
 }
 
-td.cell {
+.cell {
   position: relative; /* Needed for absolute positioning of ::before */
 }
 
-td.cell::before {
+.cell::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -58,37 +58,8 @@ td.cell::before {
   box-sizing: border-box;
 }
 
-td.cell.picked::before {
+.cell.picked::before {
   opacity: 1;
 }
 
-.setting-row {
-  display: flex;
-  align-items: left;
-  justify-content: left;
-  gap: 10px; /* space between items */
-  margin: 10px 0;
-}
 
-.setting-row button {
-  font-size: 20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  border: none;
-  background-color: gold;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.2s;
-}
-
-.setting-row button:hover:not(:disabled) {
-  background-color: orange;
-}
-
-.setting-row span {
-  font-size: 16px;
-  font-weight: bold;
-  min-width: 160px;
-  text-align: center;
-}
