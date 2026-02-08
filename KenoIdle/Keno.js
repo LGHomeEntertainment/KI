@@ -13,6 +13,7 @@ let roundIndex = 2;
 let playRounds = roundOptions[roundIndex];
 let roundInterval = 2000;
 let drawInterval = 200;
+let boardSize = 80
 
 // ==== SOUNDS ====
 const sfxDraw = new Audio("sounds/draw.ogg");
@@ -25,11 +26,25 @@ const sfxLose = new Audio("sounds/lose.wav");
 document.addEventListener("DOMContentLoaded", initialise);
 
 function initialise() {
-  console.log("Initialising...");
+  generateGrid(boardSize)
   attachListeners();
   updateBetDisplay();
   updateRoundDisplay();
   updateMoneyDisplay();
+}
+
+function generateGrid(boardSize) {
+  let table = document.getElementById("table");
+  table.innerHTML = "";
+
+  for (let i = 1; i <= boardSize; i++) {
+    const td = document.createElement("div");
+    td.className = "cell";
+    td.id = "cell" + i;
+    td.textContent = i;
+    table.appendChild(td);
+  }
+  // enableInputs();
 }
 
 // ==== CUSTOMISATION/SETTINGS (shared function) ====
@@ -226,7 +241,7 @@ function multipleRounds() {
 }
 
 function resetBoard() {
-  let cells = document.querySelectorAll("td");
+  let cells = document.querySelectorAll("div");
   cells.forEach((cell) => {
     cell.classList.remove("hit", "drawn");
   });

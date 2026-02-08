@@ -1,9 +1,9 @@
 /* Container for the grid */
-#grid {
+#table {
   display: grid;
   border-collapse: collapse;
   border-spacing: 0;
-  grid-template-columns: repeat(var(--grid-size), 1fr); /* dynamic columns */
+  grid-template-columns: repeat(10, 30px); 
   width: fit-content;
   margin: 20px auto;
 }
