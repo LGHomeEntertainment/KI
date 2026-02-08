@@ -16,6 +16,13 @@ let payoutTable = {
 
 // ==== MULTIPLIERS ====
 
+function getTotalPayoutMultiplier() {
+  return (
+    1 +
+    upgrades.payoutMultiplier.level *
+      upgrades.payoutMultiplier.effectPerLevel
+  );
+}
 
 
 // ==== SCALING ====

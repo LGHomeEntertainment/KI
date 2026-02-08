@@ -1,10 +1,86 @@
-let upgrades = {
-  payoutMultiplier: 1,
-  speedMultiplier: 1,
-  extraDraws: 0,
-  autoPick: false,
 
-  // placeholders
+let upgrades = {
+  payoutMultiplier: {
+    level: 0,
+    baseCost: 1000,
+    costMultiplier: 1.8,
+    effectPerLevel: 0.25,
+    maxLevel: 50,
+  },
+
+  speed: {
+    level: 0,
+    baseCost: 2000,
+    costMultiplier: 1.7,
+    effectPerLevel: 0.1,
+    maxLevel: 20,
+  },
+
+  autoPick: {
+    level: 0,
+    baseCost: 10000,
+    costMultiplier: 3,
+    effectPerLevel: 1,
+    maxLevel: 1, // boolean-style upgrade
+  },
+
+  extraDraws: 0,
+
+    // placeholders
   boardCount: 1,
   idleEfficiency: 1,
 };
+
+
+
+function getUpgradeCost(id) {
+  const up = upgrades[id];
+  return Math.floor(
+    up.baseCost * Math.pow(up.costMultiplier, up.level)
+  );
+}
+
+function canBuyUpgrade(id) {
+  return (
+    upgrades[id].level < upgrades[id].maxLevel &&
+    playerMoney >= getUpgradeCost(id)
+  );
+}
+
+
+function buyUpgrade(id) {
+  const up = upgrades[id];
+  if (!up) return;
+
+  if (!canBuyUpgrade(id)) return;
+
+  const cost = getUpgradeCost(id);
+  playerMoney -= cost;
+  up.level++;
+
+  applyUpgradeEffects(id);
+
+  saveGame();
+  updateMoneyDisplay();
+}
+
+
+function applyUpgradeEffects(id) {
+  switch (id) {
+    case "payoutMultiplier":
+      // computed dynamically in payout.js
+      break;
+
+    case "speed":
+      roundInterval = Math.max(
+        300,
+        2000 * Math.pow(0.9, upgrades.speed.level)
+      );
+      break;
+
+    case "autoPick":
+      // handled in game loop later
+      break;
+  }
+}
+
