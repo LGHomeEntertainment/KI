@@ -3,7 +3,7 @@
 function attachListeners() {
   // Player cells
   document.getElementById("table").addEventListener("click", (e) => {
-  if (!e.target.classList.contains("cell") || gameRunning) return;
+  if (!e.target.classList.contains("cell") || gameState.running) return;
   toggleCell(e);
 });
   document.getElementById("debugResetBtn").addEventListener("click", hardReset);
@@ -11,14 +11,19 @@ function attachListeners() {
 
   // Play + clear
   document.getElementById("playBtn").addEventListener("click", () => {
-    if (gameRunning) return; // prevent spam-click start
+    if (gameState.running) return; // prevent spam-click start
     startGameLoop();
   });
 
   document.getElementById("clearBtn").addEventListener("click", () => {
-    if (gameRunning) return;
+    if (gameState.running) return;
     clearPicks();
   });
+
+    document
+    .getElementById("soundBtn")
+    .addEventListener("click", toggleSound);
+
 }
 
 function updateMoneyDisplay() {
@@ -26,5 +31,10 @@ function updateMoneyDisplay() {
     `$${playerMoney.toLocaleString()}`;
 }
 
+
+function updateSoundButton() {
+  const btn = document.getElementById("soundBtn");
+  btn.textContent = settings.sound ? "🔊 Sound ON" : "🔇 Sound OFF";
+}
 
 

@@ -1,10 +1,15 @@
 function saveGame() {
-  localStorage.setItem("KenoIncrementalSave", JSON.stringify(gameState));
+  const save = {
+    playerMoney,
+    upgrades,
+    gameState,
+    settings,
+  };
+  localStorage.setItem("kenoSave", JSON.stringify(save));
 }
 
-
 function loadGame() {
-  const raw = localStorage.getItem("KenoIncrementalSave");
+  const raw = localStorage.getItem("kenoSave");
   if (!raw) return;
 
   const data = JSON.parse(raw);
@@ -13,12 +18,13 @@ Object.assign(gameState.currency, data.currency ?? {})
 Object.assign(gameState.upgrades, data.upgrades ?? {})
 
   applyUpgrades()
-//  generategrid(boardSize)
+  applySoundSettings(); // restore audio state
+
   updateMoneyDisplay();
 }
 
 
 function hardReset() { // just for debugging tests
-  localStorage.removeItem("KenoIncrementalSave");
+  localStorage.removeItem("kenoSave");
   location.reload();
 }

@@ -2,7 +2,7 @@
 
 // player picking numbers. numbers are circled.
 function toggleCell(e) {
-  if (gameRunning) return;
+  if (gameState.running) return;
   let clickedCell = e.target;
   let pickValue = parseInt(clickedCell.id.replace("cell", ""));
 
@@ -80,9 +80,9 @@ function comparePicks() {
 }
 
 function startGameLoop() {
-  if (playerPicks.length === 0 || gameRunning) return;
+  if (playerPicks.length === 0 || gameState.running) return;
 
-  gameRunning = true;
+  gameState.running = true;
   runRound();
 }
 
