@@ -77,7 +77,7 @@ function resolveRound() {
   document.getElementById("feedback").textContent = feedbackText;
   playerMoney += winnings;
   updateMoneyDisplay();
-  saveGame();
+  //saveGame();
 }
 
 function startGameLoop() {

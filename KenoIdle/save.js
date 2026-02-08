@@ -6,36 +6,39 @@ function saveGame() {
     settings,
   };
   localStorage.setItem("kenoSave", JSON.stringify(save));
+  console.log("Autosaved at", new Date().toLocaleTimeString());
 }
 
-function loadGame() {
-  console.log("Loaded save:", data);
+  function loadGame() {
+    const raw = localStorage.getItem("kenoSave");
+    if (!raw) return;
+    const data = JSON.parse(raw);
 
-  const raw = localStorage.getItem("kenoSave");
-  if (!raw) return;
+    if (typeof data.playerMoney === "number") {
+      playerMoney = data.playerMoney;
+    }
 
-  const data = JSON.parse(raw);
+    if (data.upgrades) {
+      Object.assign(upgrades, data.upgrades);
+    }
 
-  if (typeof data.playerMoney === "number") {
-    playerMoney = data.playerMoney;
+    if (data.gameState) {
+      Object.assign(gameState, data.gameState);
+    }
+
+    if (data.settings) {
+      Object.assign(settings, data.settings);
+    }
+
+    // ALWAYS reset volatile state
+    gameState.running = false; // ensure game is not running on load
+
+    console.log("Loaded save:", data);
+  // applyUpgrades();
+    // applySoundSettings();
+    // attachListeners();
+    // updateMoneyDisplay();
   }
-
-  if (data.upgrades) {
-    Object.assign(upgrades, data.upgrades);
-  }
-
-  if (data.gameState) {
-    Object.assign(gameState, data.gameState);
-  }
-
-  if (data.settings) {
-    Object.assign(settings, data.settings);
-  }
-
-  applyUpgrades();
-  applySoundSettings();
-  updateMoneyDisplay();
-}
 
 
 

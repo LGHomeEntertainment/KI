@@ -4,8 +4,10 @@
 document.addEventListener("DOMContentLoaded", initialise);
 
 function initialise() {
-  generateGrid(boardSize)
-  attachListeners();
+  loadGame();                // data only
+  generateGrid(boardSize);   // DOM creation
+  attachListeners();         // UI wiring
+  applySoundSettings();      // depends on settings
   updateMoneyDisplay();
   setInterval(saveGame, 20000);
 }
