@@ -9,19 +9,34 @@ function saveGame() {
 }
 
 function loadGame() {
+  console.log("Loaded save:", data);
+
   const raw = localStorage.getItem("kenoSave");
   if (!raw) return;
 
   const data = JSON.parse(raw);
 
-Object.assign(gameState.currency, data.currency ?? {})
-Object.assign(gameState.upgrades, data.upgrades ?? {})
+  if (typeof data.playerMoney === "number") {
+    playerMoney = data.playerMoney;
+  }
 
-  applyUpgrades()
-  applySoundSettings(); // restore audio state
+  if (data.upgrades) {
+    Object.assign(upgrades, data.upgrades);
+  }
 
+  if (data.gameState) {
+    Object.assign(gameState, data.gameState);
+  }
+
+  if (data.settings) {
+    Object.assign(settings, data.settings);
+  }
+
+  applyUpgrades();
+  applySoundSettings();
   updateMoneyDisplay();
 }
+
 
 
 function hardReset() { // just for debugging tests

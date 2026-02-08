@@ -7,6 +7,7 @@ function initialise() {
   generateGrid(boardSize)
   attachListeners();
   updateMoneyDisplay();
+  setInterval(saveGame, 20000);
 }
 
 function generateGrid(boardSize) {

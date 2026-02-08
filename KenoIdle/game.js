@@ -52,7 +52,7 @@ function generateWinners(onFinish) {
   generateNext(); // first one to start off the chain
 }
 
-function comparePicks() {
+function resolveRound() {
   let hits = document.querySelectorAll(".hit").length;
   let hitIndex = hits - 1;
   let feedbackText = "";
@@ -77,6 +77,7 @@ function comparePicks() {
   document.getElementById("feedback").textContent = feedbackText;
   playerMoney += winnings;
   updateMoneyDisplay();
+  saveGame();
 }
 
 function startGameLoop() {
@@ -90,7 +91,7 @@ function runRound() {
   resetBoard();
 
   generateWinners(() => {
-    comparePicks();
+    resolveRound();
 
     setTimeout(() => {
       runRound(); // no guards here
