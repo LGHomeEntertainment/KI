@@ -22,4 +22,3 @@ function generateGrid(boardSize) {
   }
   enableInputs();
 }
-

@@ -1,5 +1,5 @@
 // ==== UI + INTERACTION ====
-// disable and enable to only affect play/clear. can buy, stop, music etc
+
 function disableInputs() {
   document.getElementById("clearBtn").removeEventListener("click", clearPicks);
 
@@ -32,12 +32,5 @@ function attachListeners() {
    document
     .getElementById("upgradeDrawSpeed")
     .addEventListener("click", buyFasterDraw);
-     document
-    .getElementById("upgradeMultiplier")
-    .addEventListener("click", buyMoneyMultiplier);
-   document
-    .getElementById("upgradeMultiplierVip")
-    .addEventListener("click", buyMoneyMultiplierVip);
-      
-    
+  
 }
