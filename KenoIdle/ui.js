@@ -1,22 +1,5 @@
 // ==== UI + INTERACTION ====
 
-// function disableInputs() {
-//   document.getElementById("clearBtn").removeEventListener("click", clearPicks);
-
-//   document.querySelectorAll(".cell").forEach((cell) => {
-//     cell.removeEventListener("click", toggleCell);
-//   });
-// }
-
-// function enableInputs() {
-//     document.getElementById("clearBtn").addEventListener("click", clearPicks);
-
-//   document.querySelectorAll(".cell").forEach((cell) => {
-//     cell.addEventListener("click", toggleCell);
-//   });
-// }
-
-
 function attachListeners() {
   // Player cells
   document.getElementById("table").addEventListener("click", (e) => {
