@@ -3,7 +3,7 @@
   display: grid;
   border-collapse: collapse;
   border-spacing: 0;
-  grid-template-columns: repeat(10, 30px); 
+  grid-template-columns: repeat(10, 30px);
   width: fit-content;
   margin: 20px auto;
 }
@@ -61,5 +61,3 @@
 .cell.picked::before {
   opacity: 1;
 }
-
-

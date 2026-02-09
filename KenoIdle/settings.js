@@ -11,6 +11,6 @@ function applySoundSettings() {
   sfxHit.volume = volume;
   sfxWin.volume = volume;
   sfxLose.volume = volume;
-  
+
   updateSoundButton();
 }

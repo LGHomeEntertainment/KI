@@ -1,7 +1,6 @@
 // ==== GLOBALs + CONSTANTS ====
 
 let playerPicks = [];
-let playerMoney = 10000000;
 let generatedNumbers = [];
 
 let bet = 1;
@@ -11,6 +10,12 @@ let bet = 1;
 let roundInterval = 2000;
 let drawInterval = 200;
 let boardSize = 80;
+
+const currency = {
+  cash: 10000000,
+  shards: 0, // prestige later
+  tickets: 0, // events / boosts later
+};
 
 // ==== SOUNDS ====
 const sfxDraw = new Audio("sounds/draw.ogg");

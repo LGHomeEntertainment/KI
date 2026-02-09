@@ -12,18 +12,13 @@ let payoutTable = {
   10: [1, 2, 3, 10, 50, 500, 5000, 10000, 50000, 100000],
 };
 
-
-
 // ==== MULTIPLIERS ====
 
 function getTotalPayoutMultiplier() {
   return (
     1 +
-    upgrades.payoutMultiplier.level *
-      upgrades.payoutMultiplier.effectPerLevel
+    upgrades.payoutMultiplier.level * upgrades.payoutMultiplier.effectPerLevel
   );
 }
 
-
 // ==== SCALING ====
-

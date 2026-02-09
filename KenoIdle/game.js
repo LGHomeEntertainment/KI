@@ -75,9 +75,7 @@ function resolveRound() {
   }
   // Update feedback in HTML
   document.getElementById("feedback").textContent = feedbackText;
-  playerMoney += winnings;
-  updateMoneyDisplay();
-  //saveGame();
+  changeCurrency("cash", winnings, "round");
 }
 
 function startGameLoop() {
@@ -100,7 +98,7 @@ function runRound() {
 }
 
 function resetBoard() {
-    // to clear generated winners
+  // to clear generated winners
   let cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => {
     cell.classList.remove("hit", "drawn");
@@ -109,11 +107,26 @@ function resetBoard() {
 }
 
 function clearPicks() {
-    // to clear player picks
+  // to clear player picks
   let cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => {
     cell.classList.remove("hit", "drawn", "picked");
   });
   playerPicks = [];
   generatedNumbers = [];
+}
+
+// ==== currency management ====
+function changeCurrency(type, amount, reason = "") {
+  if (amount === 0) return;
+  if (!(type in currency)) return;
+
+  currency[type] += amount;
+
+  updateMoneyDisplay();
+  saveGame();
+
+  if (reason) {
+    console.log(`[${type}] ${reason}: ${amount}`);
+  }
 }

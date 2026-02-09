@@ -1,4 +1,3 @@
-
 let upgrades = {
   payoutMultiplier: {
     level: 0,
@@ -26,27 +25,22 @@ let upgrades = {
 
   extraDraws: 0,
 
-    // placeholders
+  // placeholders
   boardCount: 1,
   idleEfficiency: 1,
 };
 
-
-
 function getUpgradeCost(id) {
   const up = upgrades[id];
-  return Math.floor(
-    up.baseCost * Math.pow(up.costMultiplier, up.level)
-  );
+  return Math.floor(up.baseCost * Math.pow(up.costMultiplier, up.level));
 }
 
 function canBuyUpgrade(id) {
   return (
     upgrades[id].level < upgrades[id].maxLevel &&
-    playerMoney >= getUpgradeCost(id)
+    currency.cash >= getUpgradeCost(id)
   );
 }
-
 
 function buyUpgrade(id) {
   const up = upgrades[id];
@@ -55,15 +49,12 @@ function buyUpgrade(id) {
   if (!canBuyUpgrade(id)) return;
 
   const cost = getUpgradeCost(id);
-  playerMoney -= cost;
-  up.level++;
 
+  up.level++;
   applyUpgradeEffects(id);
 
-  saveGame();
-  updateMoneyDisplay();
+  changeCurrency("cash", -cost, "upgrade" + id);
 }
-
 
 function applyUpgradeEffects(id) {
   switch (id) {
@@ -72,10 +63,7 @@ function applyUpgradeEffects(id) {
       break;
 
     case "speed":
-      roundInterval = Math.max(
-        300,
-        2000 * Math.pow(0.9, upgrades.speed.level)
-      );
+      roundInterval = Math.max(300, 2000 * Math.pow(0.9, upgrades.speed.level));
       break;
 
     case "autoPick":
@@ -83,4 +71,3 @@ function applyUpgradeEffects(id) {
       break;
   }
 }
-
