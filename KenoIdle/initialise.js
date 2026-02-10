@@ -1,13 +1,12 @@
-
 // ==== INITIALISATION + GENERATION OF STUFF ====
 
 document.addEventListener("DOMContentLoaded", initialise);
 
 function initialise() {
-  loadGame();                // data only
-  generateGrid(boardSize);   // DOM creation
-  attachListeners();         // UI wiring
-  applySoundSettings();      // depends on settings
+  loadGame(); // data only
+  generateGrid(boardSize); // DOM creation
+  attachListeners(); // UI wiring
+  applySoundSettings(); // depends on settings
   updateMoneyDisplay();
   setInterval(saveGame, 20000);
 }
@@ -25,15 +24,6 @@ function generateGrid(boardSize) {
   }
   // enableInputs();
 }
-
-
-
-
-
-
-
-
-
 
 // Does it calculate money? → payout.js
 

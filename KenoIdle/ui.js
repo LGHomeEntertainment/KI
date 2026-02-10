@@ -31,3 +31,4 @@ function updateSoundButton() {
   const btn = document.getElementById("soundBtn");
   btn.textContent = settings.sound ? "🔊 Sound ON" : "🔇 Sound OFF";
 }
+

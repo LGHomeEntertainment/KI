@@ -22,7 +22,8 @@ let upgrades = {
     effectPerLevel: 1,
     maxLevel: 1, // boolean-style upgrade
   },
-
+  
+//autoplay, speedupdraw, speedupround
   extraDraws: 0,
 
   // placeholders
@@ -36,11 +37,14 @@ function getUpgradeCost(id) {
 }
 
 function canBuyUpgrade(id) {
-  return (
-    upgrades[id].level < upgrades[id].maxLevel &&
-    currency.cash >= getUpgradeCost(id)
-  );
+  const up = upgrades[id];
+  if (!up) return false;
+  if (up.maxLevel && up.level >= up.maxLevel) return false;
+
+  const cost = getUpgradeCost(id);
+  return currency.cash >= cost;
 }
+
 
 function buyUpgrade(id) {
   const up = upgrades[id];
@@ -71,3 +75,12 @@ function applyUpgradeEffects(id) {
       break;
   }
 }
+
+
+function onUpgradeClick(id) {
+  if (!canBuyUpgrade(id)) return;
+  buyUpgrade(id);
+  updateUpgradeUI(id);
+}
+
+
