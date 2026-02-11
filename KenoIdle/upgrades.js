@@ -5,6 +5,7 @@ let upgrades = {
     costMultiplier: 1.8,
     effectPerLevel: 0.25,
     maxLevel: 50,
+    currency: "cash",
   },
 
   speed: {
@@ -13,25 +14,29 @@ let upgrades = {
     costMultiplier: 1.7,
     effectPerLevel: 0.1,
     maxLevel: 20,
+    currency: "cash",
   },
 
   autoPick: {
+    // keep as a prestige upgrade.
     level: 0,
-    baseCost: 100,
+    baseCost: 25,
     costMultiplier: 3,
     effectPerLevel: 1,
     maxLevel: 1, // boolean-style upgrade
+    currency: "shards", // prestige currency, separate from cash
   },
 
-    autoPlay: {
+  autoPlay: {
     level: 0,
     baseCost: 10000,
     costMultiplier: 3,
     effectPerLevel: 1,
-    maxLevel: 1, 
+    maxLevel: 1,
+    currency: "cash",
   },
-  
-//autoplay, speedupdraw, speedupround
+
+  //autoplay, speedupdraw, speedupround
   extraDraws: 0,
 
   // placeholders
@@ -52,7 +57,6 @@ function canBuyUpgrade(id) {
   const cost = getUpgradeCost(id);
   return currency.cash >= cost;
 }
-
 
 function buyUpgrade(id) {
   const up = upgrades[id];
@@ -84,17 +88,14 @@ function applyUpgradeEffects(id) {
   }
 }
 
-
 function onUpgradeClick(id) {
   if (!canBuyUpgrade(id)) return;
   buyUpgrade(id);
   updateUpgradeUI(id);
 }
 
-
-
 // Helper functions (pure queries, called often)
 function hasAutoPlay() {
-  return upgrades.autoPlay.level > 0
+  // called by game.js - runround()
+  return upgrades.autoPlay.level > 0;
 }
-
