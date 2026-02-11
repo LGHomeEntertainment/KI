@@ -92,3 +92,9 @@ function onUpgradeClick(id) {
 }
 
 
+
+// Helper functions (pure queries, called often)
+function hasAutoPlay() {
+  return upgrades.autoPlay.level > 0
+}
+
