@@ -91,9 +91,13 @@ function runRound() {
   generateWinners(() => {
     resolveRound();
 
-    setTimeout(() => {
+    if (hasAutoPlay()) {
+      setTimeout(() => {
       runRound(); // no guards here
     }, roundInterval);
+    } else {
+      gameState.running = false
+    }
   });
 }
 
