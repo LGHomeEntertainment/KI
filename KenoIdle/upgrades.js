@@ -17,10 +17,18 @@ let upgrades = {
 
   autoPick: {
     level: 0,
-    baseCost: 10000,
+    baseCost: 100,
     costMultiplier: 3,
     effectPerLevel: 1,
     maxLevel: 1, // boolean-style upgrade
+  },
+
+    autoPlay: {
+    level: 0,
+    baseCost: 10000,
+    costMultiplier: 3,
+    effectPerLevel: 1,
+    maxLevel: 1, 
   },
   
 //autoplay, speedupdraw, speedupround
