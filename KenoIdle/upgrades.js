@@ -55,7 +55,8 @@ function canBuyUpgrade(id) {
   if (up.maxLevel && up.level >= up.maxLevel) return false;
 
   const cost = getUpgradeCost(id);
-  return currency.cash >= cost;
+  let currencyType = up.currency
+  return currency[currencyType] >= cost;
 }
 
 function buyUpgrade(id) {
