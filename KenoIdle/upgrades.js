@@ -8,11 +8,11 @@ let upgrades = {
     currency: "cash",
   },
 
-  speed: {
+  fasterDraw: {
     level: 0,
     baseCost: 2000,
     costMultiplier: 1.7,
-    effectPerLevel: 0.1,
+    effectPerLevel: 500,
     maxLevel: 20,
     currency: "cash",
   },
@@ -55,7 +55,7 @@ function canBuyUpgrade(id) {
   if (up.maxLevel && up.level >= up.maxLevel) return false;
 
   const cost = getUpgradeCost(id);
-  let currencyType = up.currency
+  let currencyType = up.currency;
   return currency[currencyType] >= cost;
 }
 
@@ -67,7 +67,7 @@ function buyUpgrade(id) {
 
   const cost = getUpgradeCost(id);
   changeCurrency(up.currency, -cost, "upgrade" + id);
-  
+
   up.level++;
   applyUpgradeEffects(id);
 }
@@ -78,8 +78,11 @@ function applyUpgradeEffects(id) {
       // computed dynamically in payout.js
       break;
 
-    case "speed":
-      roundInterval = Math.max(300, 2000 * Math.pow(0.9, upgrades.speed.level));
+    case "fasterDraw":
+      drawInterval = Math.max(
+        300,
+        2000 - upgrades.fasterDraw.level * upgrades.fasterDraw.effectPerLevel,
+      );
       break;
 
     case "autoPick":
