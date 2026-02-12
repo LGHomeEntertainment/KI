@@ -66,11 +66,10 @@ function buyUpgrade(id) {
   if (!canBuyUpgrade(id)) return;
 
   const cost = getUpgradeCost(id);
-
+  changeCurrency(up.currency, -cost, "upgrade" + id);
+  
   up.level++;
   applyUpgradeEffects(id);
-
-  changeCurrency("cash", -cost, "upgrade" + id);
 }
 
 function applyUpgradeEffects(id) {
