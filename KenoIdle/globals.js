@@ -8,7 +8,7 @@ let bet = 1;
 // let roundIndex = 2;
 // let playRounds = roundOptions[roundIndex];
 let roundInterval = 2000;
-let drawInterval = 200;
+let drawInterval = 2000;
 let boardSize = 80;
 
 const currency = {
