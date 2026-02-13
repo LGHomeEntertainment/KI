@@ -1,0 +1,40 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: #333;
+  padding: 20px;
+}
+
+table {
+  border-collapse: collapse; /* removes double borders */
+  margin: 20px auto; /* centers the table */
+}
+
+td {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 2rem;
+  border: 2px solid #333;
+  cursor: pointer;
+}
+
+
+#feedback {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+button {
+  padding: 8px 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}

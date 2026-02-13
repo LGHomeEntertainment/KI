@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Helicopter HTML Game</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div id="start-screen">
+      <h1 style="font-size: 2rem">Helicopter Game</h1>
+      <p style="font-size: 1rem">
+        Tap and hold the screen to fly. Release to descend.<br>Press the start button to begin!
+      </p>
+      <button id="start-button">Start Game</button>
+      <button id="viewscores-button">View High Scores</button>
+    </div>
+
+    <div id="viewscores-screen">
+      <h2 style="font-size: 2rem">HIGH SCORES</h2>
+      <p style="font-size: 1rem">Top 10 Scores</p>
+      <ol id="highscores-list"></ol>
+      <button id="gamestart-button">Start Game</button>
+      <button id="closescores-button">Return to Menu</button>
+    </div>
+
+    <div id="score"></div>
+
+    <div id="gameover-screen">
+      <h2 style="font-size: 2rem">GAME OVER</h2>
+      <p style="font-size: 1rem">
+        Enter the Hall of Fame to stand a chance to win!
+      </p>
+      <p>Final distance flown: <span id="distTravelled"> 0</span> m</p>
+      <!-- Form to input player's name and email -->
+    <form id="scoreForm">
+        <input type="text" id="playerName" placeholder="Enter Name" required>
+        <input type="email" id="playerEmail" placeholder="Enter Email" required>
+    </form>
+      <button id="save-button">Save</button>
+      <button id="restart-button">Restart</button>
+      <button id="gameover-viewscores-button">View High Scores</button>
+    </div>
+
+    <canvas width="1000" height="600" id="game"></canvas>
+
+    <script src="script.js"></script>
+
+  </body>
+</html>

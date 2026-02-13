@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+</head>
+
+<body>
+    <h2 id="demo">Grumpy JS</h2>
+    <h1 id="demo5" class="intro"></h1>
+    <h3 id="demo6"></h3>
+    <button type="button" onclick="document.getElementById('demo').innerHTML=Date()">
+        Click me.
+    </button>
+    <p id="demo100"></p>
+    <button type="button" onclick="myFunction()">Click now</button>
+    <p id="demo2"></p>
+    <button type="button" onclick="alertFunction()">Click for alert</button>
+    <p id="demo4"></p>
+    <p id="demo7"></p>
+    <p id="demo8"></p>
+    <p id="demo9"></p>
+    <p id="demo10"></p>
+    <p id="demo11"></p>
+    <img src="https://i.ibb.co/h709QDx/merlion.jpg" id="merlion2" alt="merlion2" height=200 width=200>
+    <p id="change">Change the text</p>
+    <p id="clock"></p>
+    <p><img src="https://i.ibb.co/h709QDx/merlion.jpg" id="merlion" alt="Merlion" width="350" />Click on the image </p>
+
+    <h1 onclick="changeText(this)">Click on this text!</h1>
+    <button id="demo12" onclick="document.getElementById('demo12').innerHTML=Date()">The time is?</button>
+    <p>This example demonstrates how to use <b>catch</b> to display an error.</p>
+    <p id="demo13"></p>
+
+    <p id="demo14"></p>
+    <input type="text" id="demo15">
+    <button type="button" onclick="errFunction()">TEST</button>
+</body>
+<!-- <script>
+    try {
+        adddlert("Wekcome guest");
+    }
+    catch (err) {
+        document.getElementById("demo13").innerHTML = err.message;
+    }
+</script> -->
+<script src="script.js"></script>
+<!-- <script>
+    document.getElementById('demo2').innerHTML = "Hello Javascript"
+</script> -->
+
+</html>

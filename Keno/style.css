@@ -1,0 +1,94 @@
+/* Container for the grid */
+#grid {
+  display: grid;
+  border-collapse: collapse;
+  border-spacing: 0;
+  grid-template-columns: repeat(var(--grid-size), 1fr); /* dynamic columns */
+  width: fit-content;
+  margin: 20px auto;
+}
+
+/* Each cell */
+.cell {
+  width: 30px;
+  height: 30px;
+  background-color: lightyellow;
+  border: 1px solid #999;
+  padding: 0;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Missed cell */
+.cell.drawn {
+  background-color: red;
+}
+
+/* Picked cell */
+.cell.picked {
+  background-color: lightblue;
+}
+
+/* Hit cell */
+.cell.hit {
+  background-color: green;
+}
+
+td.cell {
+  position: relative; /* Needed for absolute positioning of ::before */
+}
+
+td.cell::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  border: 2px solid blue;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  box-sizing: border-box;
+}
+
+td.cell.picked::before {
+  opacity: 1;
+}
+
+.setting-row {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  gap: 10px; /* space between items */
+  margin: 10px 0;
+}
+
+.setting-row button {
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background-color: gold;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.setting-row button:hover:not(:disabled) {
+  background-color: orange;
+}
+
+.setting-row span {
+  font-size: 16px;
+  font-weight: bold;
+  min-width: 160px;
+  text-align: center;
+}

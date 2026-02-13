@@ -1,0 +1,158 @@
+html {
+  font-size: 16px; /* Default root font size */
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+} 
+
+h1, h2 {
+  font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+  margin: 0.5em 0;
+  text-align: center;
+}
+
+p {
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  text-align: center;
+}
+
+
+
+/* General full-screen overlay styles for all screens */
+#start-screen,
+#viewscores-screen,
+#gameover-screen {
+  position: absolute; /* Make the screen overlay the canvas */
+  top: 30%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ /* background-color: rgba(0, 0, 0, 0.7); Semi-transparent black */
+  z-index: 10; /* Ensure it's on top of the canvas */
+  color: white;
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding-top: 20px;
+  max-width: 100%; /* Scale canvas dynamically */
+  height: auto; /* Maintain aspect ratio */
+  margin: auto; /* Center canvas when resizing */
+}
+
+#start-screen {
+  display: block; /* show this initially */
+}
+
+#gameover-screen,
+#viewscores-screen {
+  display: none; /* Hide this initially */
+}
+
+#input-name {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  display: none;
+  margin-top: 10px;
+}
+
+#player-name {
+  font-size: 1rem;
+  padding: 8px;
+  width: 200px;
+  margin: 10px 0;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+#highscores-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#highscores-list li {
+font-size: clamp(1.5rem, 2vw, 2.2rem);
+  margin-bottom: 5px;
+}
+
+#game {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5; /* Ensure it's on top of the canvas */
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding-top: 20px;
+  max-width: 100%; /* Scale canvas dynamically */
+  height: auto; /* Maintain aspect ratio */
+  margin: auto; /* Center canvas when resizing */
+  display: none; /* Hide the game initially */
+}
+
+#start-button,
+#gamestart-button,
+#viewscores-button,
+#gameover-viewscores-button,
+#restart-button,
+#save-button,
+#closescores-button {
+font-size: clamp(1rem, 1.5vw, 1.2rem);
+  padding: 10px 20px;
+  background-color: green;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#start-button:hover,
+#gamestart-button:hover,
+#gameover-viewscores-button:hover,
+#viewscores-button:hover,
+#restart-button:hover,
+#save-button:hover,
+#closescores-button:hover {
+  background-color: darkgreen;
+}
+
+/* Adjustments specifically for 27" FHD (1920x1080) */
+@media (min-width: 1920px) {
+  h1, h2 {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+#start-button,
+#gamestart-button,
+#viewscores-button,
+#gameover-viewscores-button,
+#restart-button,
+#save-button,
+#closescores-button {
+    font-size: 1.3rem;
+    padding: 0.75em 1.25em;
+  }
+
+  #highscores-list li {
+    font-size: 2.5rem;
+  }
+
+#input-name {
+    font-size: 1.3rem;
+  }
+}

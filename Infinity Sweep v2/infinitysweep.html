@@ -1,0 +1,42 @@
+<!doctype html>
+<!-- Infinity Explorer -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Infinity SS</title>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="game-container">
+      <h1>SS</h1>
+
+      <div id="viewport">
+        <div id="camera">
+          <div id="grid">
+            <!-- JS will generate rows and cells -->
+          </div>
+        </div>
+      </div>
+      <div class="controls">
+        <button id="zoomOutBtn">-</button>
+        <button id="zoomInBtn">+</button>
+
+        <p id="revealed">Revealed:</p>
+        <p id="deaths">Dead cells:</p>
+        <p id="integrity">Integrity:</p>
+
+        <button id="resetBtn">Start a new game</button>
+      </div>
+    </div>
+
+    <script src="JS/globals.js"></script>
+    <script src="JS/grid.js"></script>
+    <script src="JS/board.js"></script>
+    <script src="JS/game.js"></script>
+    <script src="JS/camera.js"></script>
+    <script src="JS/input.js"></script>
+    <script src="JS/save.js"></script>
+    <script src="JS/main.js"></script>
+  </body>
+</html>

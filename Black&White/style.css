@@ -1,0 +1,40 @@
+/* Container for the grid */
+#grid {
+  border-collapse: collapse;
+  margin: 20px auto;
+}
+
+/* Each cell */
+.cell {
+  width: 30px;
+  height: 30px;
+  background-color: grey;
+  color: black;
+  border: 1px solid #999;
+  padding: 0;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cell.black {
+  background-color: black;
+  color: white;
+}
+
+.cell.grey {
+  background-color: grey;
+  color: black;
+}
+
+.cell.white {
+  background-color: white;
+  color: black;
+}
+
+.cell.error {
+  color: red;
+}

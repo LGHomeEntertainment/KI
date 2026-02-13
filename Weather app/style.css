@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: normal;
+}
+
+button {
+  cursor: pointer;
+}
+
+button,
+input {
+  border: none;
+  background: none;
+  outline: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  background: #34496c;
+  color: #212121;
+  padding: 70px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* SECTION #1
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.top-banner {
+  color: white;
+}
+
+.heading {
+  font-weight: bold;
+  font-size: 4rem;
+  letter-spacing: 0.02em;
+  padding: 0 0 30px 0;
+}
+
+.top-banner form {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.top-banner form input {
+  font-size: 2rem;
+  height: 40px;
+  padding: 5px 5px 10px;
+  border-bottom: 1px solid;
+}
+
+.top-banner form input::placeholder {
+  color: currentColor;
+}
+
+.top-banner form button {
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  padding: 15px 20px;
+  margin-left: 15px;
+  border-radius: 5px;
+  background: white;
+  color: #212121;
+}
+
+.top-banner form button:hover {
+  background: wheat;
+}
+
+.top-banner form .msg {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  max-width: 450px;
+  min-height: 40px;
+}
+
+
+.result-section {
+  margin: 70px 0 20px;
+  width: 400px;
+}
+
+.result-section .city {
+  position: relative;
+  padding: 40px 10%;
+  border-radius: 20px;
+  background: white;
+  color: #53627c;
+}
+
+.result-section .city::after {
+  content: "";
+  width: 90%;
+  height: 50px;
+  position: absolute;
+  bottom: -12px;
+  left: 5%;
+  z-index: -1;
+  opacity: 0.3;
+  border-radius: 20px;
+  background: white;
+}
+
+.result-section figcaption {
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.result-section .city-temp {
+  font-size: 5rem;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #212121;
+}
+
+.result-section .city sup {
+  font-size: 0.5em;
+}
+
+.result-section .city-name sup {
+  padding: 0.2em 0.6em;
+  border-radius: 30px;
+  color: white;
+  background: #ff8c00;
+}
+
+.result-section .city-icon {
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+.page-footer {
+  text-align: right;
+  font-size: 1rem;
+  color: white;
+  margin-top: 40px;
+}

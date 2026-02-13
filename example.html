@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Examples</title>
+  </head>
+
+  <body>
+    <h1 id="title">Learn to cook</h1>
+    <div>
+      <img
+        id="cooking-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/f/f1/2ChocolateChipCookies.jpg"
+        alt="cookies_img"
+        style="float: left; margin-right: 10px"
+        width="250px"
+        onmouseover="changeImage()"
+        onmouseout="changeBack()"
+      />
+      <p>
+        Bumfuzzle (verb) Has anyone ever confused or flustered you? ... Degust
+        (verb) Are you a foodie? ... Taradiddle (noun) ...
+      </p>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <h1>List of ingredients</h1>
+      <ul>
+        <li>2 eggs</li>
+        <li>1 pinch of salt</li>
+        <li>2 cups of flour</li>
+        <li>20g sugar</li>
+      </ul>
+
+      <h2>Dishes</h2>
+      <ul id="dish">
+        Dishes List
+      </ul>
+    </div>
+    <script>
+      document.getElementById("title").style.color = "blue";
+
+      function changeImage() {
+        document.getElementById("cooking-img").src =
+          "https://www.southernliving.com/thmb/1nXApw4eCu0_IjJInCt3sDrVhSk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Monster_Cookies_010-2996b6446e834ad1b093ef08b6828160.jpg";
+      }
+
+      function changeBack() {
+        document.getElementById("cooking-img").src =
+          "https://upload.wikimedia.org/wikipedia/commons/f/f1/2ChocolateChipCookies.jpg";
+      }
+
+      class dishes {
+        constructor(name, calories, difficulty) {
+          this.name = name;
+          this.calories = calories;
+          this.difficulty = difficulty;
+        }
+        dishInfo() {
+          return (
+            "The Dish name is " +
+            this.name +
+            ", the calories inside is " +
+            this.calories +
+            ". The difficulty of this dish is " +
+            this.difficulty +
+            "."
+          );
+        }
+      }
+
+      let dish1 = new dishes("chicken rice", 400, "easy");
+
+      console.log(dish1.dishInfo()) // if need to check just dish1
+      
+      let dish2 = new dishes("laksa", 600, "easy");
+      let dish4 = new dishes("nasi lemak", 800, "medium");
+      let dish3 = new dishes("bulgolgi", 1000, "difficult");
+
+      var dishList = [dish1, dish2, dish3, dish4];
+      console.log(dishList);
+      var text = "";
+
+      for (item = 0; item < dishList.length; item++) {
+        console.log(dishList.item);
+        text += "<li>" + dishList[item].dishInfo() + "</li>";
+      }
+
+      document.getElementById("dish").innerHTML = text;
+    </script>
+  </body>
+</html>
