@@ -23,8 +23,11 @@ function attachListeners() {
 }
 
 function updateMoneyDisplay() {
-  document.getElementById("moneyDisplay").textContent =
-    `$${currency.cash.toLocaleString()}`;
+  document.getElementById("moneyValue").textContent = formatNumber(currency.cash);
+}
+
+function formatNumber(num) {
+  return num.toLocaleString();
 }
 
 function updateSoundButton() {
