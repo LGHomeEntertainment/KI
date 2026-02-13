@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Keno</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="game-container">
+      <h1>KN</h1>
+
+      <div id="table"></div>
+
+      <div id="moneyContainer">Money: $<span id="moneyValue">0</span></div>
+      <p id="feedback"></p>
+
+      <div class="controls">
+        <button id="playBtn">Play!</button>
+        <button id="clearBtn">Clear All</button>
+        <button id="soundBtn">Toggle Sound</button>
+        <button id="debugResetBtn">Debug Reset</button>
+      </div>
+
+      <div class="upgradeShop">
+        <button onclick="onUpgradeClick('autoPick')">Auto Pick</button>
+        <button onclick="onUpgradeClick('fasterDraw')">Faster Draw</button>
+        <button onclick="onUpgradeClick('autoPlay')">Auto Play</button>
+        <button onclick="onUpgradeClick('payoutMultiplier')">
+          Payout Multiplier
+        </button>
+      </div>
+    </div>
+
+    <script src="globals.js"></script>
+    <script src="initialise.js"></script>
+    <script src="settings.js"></script>
+    <script src="upgrades.js"></script>
+    <script src="ui.js"></script>
+    <script src="game.js"></script>
+    <script src="payout.js"></script>
+    <script src="save.js"></script>
+  </body>
+</html>
