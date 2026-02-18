@@ -57,8 +57,13 @@ function resolveRound() {
   let hitIndex = hits - 1;
   let feedbackText = "";
   let picks = playerPicks.length;
-  let payoutMultiplier = payoutTable[picks]?.[hitIndex] || 0;
-  let winnings = bet * payoutMultiplier;
+  let baseMultiplier = payoutTable[picks]?.[hitIndex] || 0;
+
+let bonusMultiplier =
+  1 + upgrades.payoutMultiplier.level * upgrades.payoutMultiplier.effectPerLevel;
+
+let winnings = bet * baseMultiplier * bonusMultiplier;
+
 
   if (winnings == 0) {
     sfxLose.currentTime = 0;

@@ -3,10 +3,7 @@
 let playerPicks = [];
 let generatedNumbers = [];
 
-let bet = 1;
-// let roundOptions = [1, 5, 10, 20];
-// let roundIndex = 2;
-// let playRounds = roundOptions[roundIndex];
+let bet = 10;
 let roundInterval = 2000;
 let drawInterval = 200;
 let boardSize = 80;
