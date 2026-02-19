@@ -35,3 +35,24 @@ function updateSoundButton() {
   btn.textContent = settings.sound ? "🔊 Sound ON" : "🔇 Sound OFF";
 }
 
+function updateStatsDisplay() {
+  let runtimeSeconds = math.floor((Date.now() - gameState.startTime / 1000);
+  let runtimeMinutes = (runtimeSeconds / 60).toFixed(1)
+
+  let winRate = gameState.totalRounds > 0 ? ((gameState.totalWins / gameState.totalRounds) * 100).toFixed(1) : 0;
+
+  let avgProfit = gameState.totalRounds > 0 ? (gameState.totalProfit / gameState.totalRounds).toFixed(2) : 0;
+
+  console.log(`
+  ==== STATS ====
+  Rounds: ${gameState.totalRounds}
+  Wins: ${gameState.totalWins}
+  Win Rate: ${winRate}%
+  Avg Profit: ${avgProfit}
+  Total Profit: ${gameState.totalProfit.toLocaleString()}
+  Runtime: ${runtimeMinutes} min
+  ========
+  `);
+}
+                              
+
