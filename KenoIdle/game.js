@@ -53,6 +53,7 @@ function generateWinners(onFinish) {
 }
 
 function resolveRound() {
+  gameState.totalRounds++;
   let hits = document.querySelectorAll(".hit").length;
   let hitIndex = hits - 1;
   let feedbackText = "";
@@ -81,6 +82,8 @@ let winnings = bet * baseMultiplier * bonusMultiplier;
   // Update feedback in HTML
   document.getElementById("feedback").textContent = feedbackText;
   changeCurrency("cash", winnings, "round");
+  gameState.totalProfit += winnings;
+  updateStatsDisplay(); 
 }
 
 function startGameLoop() {
