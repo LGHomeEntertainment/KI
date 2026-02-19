@@ -26,8 +26,13 @@ let gameState = {
 
   totalRounds: 0,
   totalWins: 0,
+  totalProfit: 0,
+  startTime: Date.now(),
 };
 
 let settings = {
   sound: true,
 };
+
+
+  
