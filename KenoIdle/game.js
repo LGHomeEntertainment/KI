@@ -60,11 +60,11 @@ function resolveRound() {
   let picks = playerPicks.length;
   let baseMultiplier = payoutTable[picks]?.[hitIndex] || 0;
 
-let bonusMultiplier =
-  1 + upgrades.payoutMultiplier.level * upgrades.payoutMultiplier.effectPerLevel;
+  let bonusMultiplier =
+    1 +
+    upgrades.payoutMultiplier.level * upgrades.payoutMultiplier.effectPerLevel;
 
-let winnings = bet * baseMultiplier * bonusMultiplier;
-
+  let winnings = bet * baseMultiplier * bonusMultiplier;
 
   if (winnings == 0) {
     sfxLose.currentTime = 0;
@@ -73,6 +73,7 @@ let winnings = bet * baseMultiplier * bonusMultiplier;
       hits === 1 ? "" : "s"
     }, which is not enough to win.`;
   } else if (winnings > 0) {
+    gameState.totalWins++;
     sfxWin.currentTime = 0;
     sfxWin.play();
     feedbackText = `You won $${winnings.toLocaleString()} for matching ${hits} number${
@@ -83,7 +84,7 @@ let winnings = bet * baseMultiplier * bonusMultiplier;
   document.getElementById("feedback").textContent = feedbackText;
   changeCurrency("cash", winnings, "round");
   gameState.totalProfit += winnings;
-  updateStatsDisplay(); 
+  updateStatsDisplay();
 }
 
 function startGameLoop() {
@@ -101,10 +102,10 @@ function runRound() {
 
     if (hasAutoPlay()) {
       setTimeout(() => {
-      runRound(); // no guards here
-    }, roundInterval);
+        runRound(); // no guards here
+      }, roundInterval);
     } else {
-      gameState.running = false
+      gameState.running = false;
     }
   });
 }

@@ -36,7 +36,7 @@ function updateSoundButton() {
 }
 
 function updateStatsDisplay() {
-  let runtimeSeconds = math.floor((Date.now() - gameState.startTime / 1000);
+  let runtimeSeconds = Math.floor((Date.now() - gameState.startTime) / 1000);
   let runtimeMinutes = (runtimeSeconds / 60).toFixed(1)
 
   let winRate = gameState.totalRounds > 0 ? ((gameState.totalWins / gameState.totalRounds) * 100).toFixed(1) : 0;

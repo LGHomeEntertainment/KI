@@ -94,7 +94,7 @@ function applyUpgradeEffects(id) {
 function onUpgradeClick(id) {
   if (!canBuyUpgrade(id)) return;
   buyUpgrade(id);
-  updateUpgradeUI(id);
+  // updateUpgradeUI(id);
 }
 
 // Helper functions (pure queries, called often)

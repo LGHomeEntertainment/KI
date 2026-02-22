@@ -23,8 +23,13 @@ function loadGame() {
   }
 
   if (data.gameState) {
-    Object.assign(gameState, data.gameState);
-  }
+  Object.assign(gameState, data.gameState);
+}
+
+// Fix broken or missing startTime
+if (!gameState.startTime || gameState.startTime <= 0) {
+  gameState.startTime = Date.now();
+}
 
   if (data.settings) {
     Object.assign(settings, data.settings);
