@@ -28,6 +28,7 @@ let gameState = {
   totalWins: 0,
   totalProfit: 0,
   startTime: Date.now(),
+  lastActiveTime: Date.now(),
 };
 
 let settings = {
